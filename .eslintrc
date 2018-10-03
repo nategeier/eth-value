@@ -1,0 +1,23 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": ["airbnb", "react"],
+  "parserOptions": {
+      "sourceType": "module"
+  },
+  "rules": {
+      "indent": ["error", 2],
+      "linebreak-style": ["error", "unix"],
+      "quotes": ["error", "single"],
+      "semi": ["error", "never"],
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+  },
+  "globals": {
+    "it": true
+  },
+  "plugins": [
+    "react"
+  ]
+}
