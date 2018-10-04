@@ -55,7 +55,7 @@ export const Header = styled(styles.Thin)`
   margin-bottom: ${styles.PADDING_SM};
 `
 
-export default () => (
+export default ({ screenWidth }) => (
   <NavBar>
     <LogoButton to="/">
       <Logo>

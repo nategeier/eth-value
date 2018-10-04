@@ -6,4 +6,5 @@ export const PADDING_XL = '4rem'
 
 export const SCREEN_SM = '700px'
 
-export const SCREEN_XL = '1365px'
+export const SCREEN_XL_RAW = 1365
+export const SCREEN_XL = `${SCREEN_XL_RAW}px`

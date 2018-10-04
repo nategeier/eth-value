@@ -28,6 +28,9 @@ const FormItems = styled.div`
   width: 100%;
   flex-direction: row;
   justify-content: center;
+  @media (max-width: ${styles.SCREEN_SM}) {
+    flex-direction: column;
+  }
 `
 
 const Button = styled.button`
@@ -113,7 +116,10 @@ const Single = styled.div`
   }
 `
 
-const SingleImg = styled.img``
+const SingleImg = styled.img`
+  width: 100%;
+  height: auto;
+`
 
 const SingleText = styled.div`
   max-width: 550px;
