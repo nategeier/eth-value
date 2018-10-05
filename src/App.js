@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 import styled from 'styled-components'
 import { Route, Switch } from 'react-router'
 import { ConnectedRouter } from 'connected-react-router'
+import firebase from 'firebase'
 import store, { history } from './store/store'
 import Home from './components/Home'
 import routes from './data/routes'
@@ -11,6 +12,14 @@ import TopNav from './components/TopNav'
 import * as styles from './styles/index'
 
 import './App.css'
+
+var config = {
+  apiKey: 'AIzaSyBCkQDSd9dsT9MvQLzjuDvAR8jAefzXZKI',
+  authDomain: 'eth-value.firebaseapp.com',
+  databaseURL: 'https://eth-value.firebaseio.com/'
+}
+
+firebase.initializeApp(config)
 
 const Page = styled.div`
   display: flex;
@@ -40,24 +49,26 @@ export default class App extends PureComponent {
 
   render() {
     const { width } = this.state
-    const isMobile = width <= styles.SCREEN_XL_RAW
+    const isMobile = width <= styles.GRID_SM
     return (
-      <div>
-        <Provider store={store}>
-          <ConnectedRouter history={history}>
-            <Page>
-              {width >= 700 && <TopNav />}
-              <Switch>
-                {routes.map(({ path, text, Component }) => (
-                  <Route key={path} exact path={path} render={() => <Component isMobile={isMobile} />} />
-                ))}
-                <Route component={Home} />
-              </Switch>
-              <Footer />
-            </Page>
-          </ConnectedRouter>
-        </Provider>
-      </div>
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <Page>
+            <TopNav isMobile={isMobile} />
+            <Switch>
+              {routes.map(({ path, text, Component }) => (
+                <Route
+                  key={path}
+                  exact
+                  path={path}
+                  render={() => <Component firebase={firebase} isMobile={isMobile} />}
+                />
+              ))}
+            </Switch>
+            <Footer isMobile={isMobile} />
+          </Page>
+        </ConnectedRouter>
+      </Provider>
     )
   }
 }

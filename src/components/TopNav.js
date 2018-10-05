@@ -10,8 +10,7 @@ const fadeInAnimation = keyframes`${fadeIn}`
 const Logo = styled(styles.GillWide)`
   color: ${styles.DARK_BLUE};
   font-size: 1.2rem;
-  padding-top: ${styles.PADDING_SM};
-  padding-bottom: ${styles.PADDING_SM};
+  padding: ${styles.PADDING_SM};
 `
 
 const Nav = styled.div`
@@ -33,6 +32,7 @@ const NavButton = styled(NavLink)`
     background-color: ${styles.TURKISH};
     color: ${styles.OFF_WHITE};
     animation: 0.6s ${fadeInAnimation};
+    cursor: pointer;
   }
 `
 
@@ -55,7 +55,7 @@ export const Header = styled(styles.Thin)`
   margin-bottom: ${styles.PADDING_SM};
 `
 
-export default ({ screenWidth }) => (
+export default ({ isMobile }) => (
   <NavBar>
     <LogoButton to="/">
       <Logo>
@@ -63,14 +63,21 @@ ETHVALUE
       </Logo>
     </LogoButton>
 
-    <Nav>
-      {routes.map(({ path, text }) => (
-        <NavButton key={text} to={path}>
-          <p>
-            {text}
-          </p>
-        </NavButton>
-      ))}
-    </Nav>
+    {!isMobile && (
+      <Nav>
+        {routes.map(({ path, text, isNav }) => {
+          if (!isNav) {
+            return false
+          }
+          return (
+            <NavButton key={text} to={path}>
+              <p>
+                {text}
+              </p>
+            </NavButton>
+          )
+        })}
+      </Nav>
+    )}
   </NavBar>
 )

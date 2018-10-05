@@ -17,15 +17,14 @@ const Main = styled.div`
   width: 100%;
   align-items: center;
   flex-direction: column;
+  background-size: contain;
   background-color: ${styles.WAVE_BLUE};
-  @media (max-width: ${styles.SCREEN_SM}) {
-    padding: 2rem;
-  }
 `
 
 const MainImg = styled.div`
   background-image: url(${({ path }) => path || '/big-wave-2.jpg'});
-  width: ${styles.SCREEN_XL};
+  max-width: ${styles.SCREEN_XL};
+  width: 100%;
   animation: 2s ${fadeInAnimation};
   display: flex;
   height: ${({ height }) => height || '573px'};

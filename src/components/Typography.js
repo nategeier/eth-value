@@ -3,12 +3,12 @@ import * as styles from '../styles'
 
 export const Header = styled(styles.Thin)`
   font-size: ${({ size }) => size || '2em'};
-  color: ${({ color }) => color || styles.LIGHT_GREY};
+  color: ${({ color }) => color || styles.BLACK};
   margin-bottom: ${styles.PADDING_SM};
 `
 
 export const Copy = styled(styles.Gill)`
-  font-size: ${({ size }) => size || '1em'};
+  font-size: ${({ size }) => size || '1.2em'};
   color: ${({ color }) => color || styles.BLACK};
   margin-bottom: ${styles.PADDING_SM};
   line-height: 1.3;
@@ -18,6 +18,7 @@ export const SanHeader = styled(styles.GillWide)`
   font-size: ${({ size }) => size || '2em'};
   color: ${({ color }) => color || styles.LIGHT_GREY};
   margin-bottom: ${styles.PADDING_SM};
+  text-transform: uppercase;
 `
 export const Headline = styled(styles.Thin)`
   width: 100%;
@@ -27,8 +28,20 @@ export const Headline = styled(styles.Thin)`
   margin-bottom: ${styles.PADDING_SM};
 `
 
-export const SubHeader = styled(styles.Gill)`
-  font-size: 1.3em;
+export const ComboHeader = styled(styles.Gill)`
+  font-size: ${({ size }) => size || '1.5rem'};
   color: ${({ color }) => color || styles.LIGHT_GREY};
-  font-weight: 400;
+  text-transform: uppercase;
+`
+
+export const ComboSubHeader = styled(styles.Thin)`
+  font-size: ${({ size }) => size || '1.2rem'};
+  color: ${({ color }) => color || styles.ACCENT};
+  margin-bottom: ${styles.PADDING_SM};
+`
+
+export const SubHeader = styled(styles.Gill)`
+  font-size: ${({ size }) => size || '1.3rem'};
+  color: ${({ color }) => color || styles.LIGHT_GREY};
+  text-transform: uppercase;
 `

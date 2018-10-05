@@ -4,29 +4,46 @@ import Web3 from 'web3'
 import styled from 'styled-components'
 import FormControl from '@material-ui/core/FormControl'
 import TextField from '@material-ui/core/TextField'
-import firebase from 'firebase'
 import abi from '../abis/apexCoin'
 import NoConnection from './NoConnection'
 import Users from '../data/users'
 import * as colors from '../styles/colors'
 import * as measurments from '../styles/measurments'
+import * as styles from '../styles'
 
-const numAccounts = 100
 const apexCoinAddress = '0x523c94a39546c35381d9d627fd8a9aa4bfa79ec4'
 const custodian = '0x592A714714A54Ff9387e8D1579e4b2878E49e212'
 const wellAddress = '0x068b0c3B92909AEd83630Be8D5c2e41A4a09A7cE'
 
-var config = {
-  apiKey: 'AIzaSyBCkQDSd9dsT9MvQLzjuDvAR8jAefzXZKI',
-  authDomain: 'apex-demo-302f2.firebaseapp.com',
-  databaseURL: 'https://apex-demo-302f2.firebaseio.com'
-}
-firebase.initializeApp(config)
-
+const table = '/apexUsers'
 const Input = styled.div`
   display: flex;
   margin-bottom: ${measurments.PADDING_MD};
 `
+
+const Page = styled.div`
+  display: flex;
+  justify-content: space-between;
+  background-color: ${styles.LESS_TURKISH};
+  width: 100%;
+`
+
+const LeftSplit = styled.div`
+  justify-content: center;
+  display: flex;
+  min-width: 400px;
+`
+
+const RightSplit = styled.div`
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+`
+// const Page = styled.div`
+//   display: flex;
+//   padding: 2rem;
+//   flex-grow: 1 0 0;
+// `
 
 const Button = styled.button`
   align-items: center;
@@ -39,24 +56,6 @@ const Button = styled.button`
   background-color: ${colors.TURKISH};
   text-align: center;
   color: ${colors.OFF_WHITE};
-`
-
-const Page = styled.div`
-  display: flex;
-  padding: 2rem;
-  flex-grow: 1 0 0;
-`
-const LeftSplit = styled.div`
-  justify-content: center;
-  display: flex;
-  flex-grow: 1;
-`
-
-const RightSplit = styled.div`
-  justify-content: center;
-  display: flex;
-  flex-grow: 2;
-  flex-wrap: wrap;
 `
 
 const Human = styled.div`
@@ -76,7 +75,6 @@ const Form = styled(FormControl)`
 `
 
 const Block = styled.div`
-  border: ${colors.LESS_TURKISH} solid 1px;
   padding: ${measurments.PADDING_SM};
   display: flex;
   flex: 1;
@@ -108,18 +106,18 @@ const End = styled.div`
   flex-direction: column;
 `
 
-const getDecimalValue = (num) => {
+const getDecimalValue = num => {
   if (num % 1 === 0) {
     return (num / 100).toFixed(2)
   }
   return num
 }
 
-const createUser = (key) => ({
+const createUser = key => ({
   id: `USER-10${key}`,
   name: 'Sally Rich',
   key,
-  cash: 100
+  cash: 10 + key
 })
 
 export default class Apex extends PureComponent {
@@ -133,7 +131,8 @@ export default class Apex extends PureComponent {
       users: [],
       wellBalance: 0,
       custodianBalance: 0,
-      db: null
+      db: null,
+      numUsers: 3
     }
   }
 
@@ -142,7 +141,8 @@ export default class Apex extends PureComponent {
     this.setBalances = this.setBalances.bind(this)
     this.airDrop = this.airDrop.bind(this)
     this.createAccounts = this.createAccounts.bind(this)
-    const { setBalances } = this
+    const { setBalances, props } = this
+    const { firebase } = props
     const db = await firebase.database()
     const web3 = new Web3(Web3.givenProvider || 'ws://localhost:8545')
     await this.setState(
@@ -158,7 +158,7 @@ export default class Apex extends PureComponent {
   async setBalances() {
     const { web3, db, contract } = this.state
 
-    const users = await db.ref('/users').once('value')
+    const users = await db.ref(table).once('value')
     const userVal = await users.val()
 
     if (!userVal) {
@@ -194,32 +194,32 @@ export default class Apex extends PureComponent {
     contract.methods
       .drop(addresses, amounts)
       .send({ from: custodian })
-      .on('transactionHash', (hash) => {
+      .on('transactionHash', hash => {
         console.log('hash======', hash)
       })
       .on('confirmation', (confirmationNumber, receipt) => {
         console.log('confirmation==========', confirmationNumber)
         setBalances()
       })
-      .on('receipt', (receipt) => {
+      .on('receipt', receipt => {
         console.log('on receipt========', receipt)
       })
   }
 
   async createAccounts() {
-    const { db, web3 } = this.state
+    const { db, web3, numUsers } = this.state
 
-    await db.ref('/users').remove()
+    await db.ref(table).remove()
     let users = []
-    for (var i = 0; i < numAccounts; i++) {
+    for (var i = 0; i < numUsers; i++) {
       users.push(createUser(i))
     }
 
     await Promise.all(
-      users.map(async (user) => {
+      users.map(async user => {
         const account = await web3.eth.accounts.create()
         console.log('account====', account)
-        return db.ref(`users/${user.id}`).set({
+        return db.ref(`${table}/${user.id}`).set({
           ...user,
           address: account.address,
           privateKey: account.privateKey
@@ -278,25 +278,25 @@ export default class Apex extends PureComponent {
       .send({
         from: custodian
       })
-      .on('transactionHash', (hash) => {
+      .on('transactionHash', hash => {
         console.log('hash======', hash)
       })
       .on('confirmation', (confirmationNumber, receipt) => {
         console.log('confirmation==========', confirmationNumber)
         getBalanceOfOwners()
       })
-      .on('receipt', (receipt) => {
+      .on('receipt', receipt => {
         console.log('on receipt========', receipt)
       })
   }
 
-  handleChange = (props) => (event) => {
+  handleChange = props => event => {
     this.setState({ [props]: event.target.value })
   }
 
   render() {
     const {
-      minted, amountToMint, users, wellBalance, custodianBalance, web3
+      minted, amountToMint, users, wellBalance, custodianBalance, web3, numUsers
     } = this.state
 
     if (!web3) {
@@ -357,6 +357,16 @@ Custodian Balance
                 <Button variant="contained" color="primary" onClick={() => this.airDrop()}>
                   Air Drop
                 </Button>
+                <Input>
+                  <TextField
+                    label="Number of Wallets"
+                    margin="dense"
+                    id="content"
+                    placeholder="Content"
+                    value={numUsers}
+                    onChange={this.handleChange('numUsers')}
+                  />
+                </Input>
                 <Button variant="contained" color="primary" onClick={() => this.createAccounts()}>
                   Create Ethereum Accounts
                 </Button>
@@ -370,7 +380,7 @@ Custodian Balance
               <Human key={key}>
                 <TextField id="standard-uncontrolled" label="id" margin="normal" value={value.id} />
                 <TextField id="standard-uncontrolled" label="Name" margin="normal" value={value.name} />
-                <TextField id="standard-uncontrolled" label="Cash" margin="normal" value={value.cash} />
+                <TextField id="standard-uncontrolled" label="Cash" margin="normal" value={`$${value.cash}`} />
                 <TextField
                   id="standard-uncontrolled"
                   label="APX"

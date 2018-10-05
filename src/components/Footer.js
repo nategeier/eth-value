@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 import * as styles from '../styles'
 
 const Footer = styled.div`
@@ -14,8 +13,7 @@ const Footer = styled.div`
 const FooterContent = styled.div`
   display: flex;
   flex-grow: 1;
-  padding-top: ${styles.PADDING_XL};
-  padding-bottom: ${styles.PADDING_XL};
+  padding: ${styles.PADDING_XL};
   max-width: ${styles.SCREEN_XL};
   flex-direction: column;
   @media (max-width: ${styles.SCREEN_SM}) {
@@ -24,6 +22,10 @@ const FooterContent = styled.div`
 `
 const ThreeBlock = styled.div`
   display: flex;
+  @media (max-width: ${styles.GRID_SM}px) {
+    flex-direction: column;
+    padding: ${styles.PADDING_MD};
+  }
 `
 
 const Block = styled.div`
@@ -71,12 +73,7 @@ const items = [
       {
         title: 'Truffle: Developer Ecosystem',
         path: 'https://truffleframework.com/'
-      }
-    ]
-  },
-  {
-    name: 'News',
-    links: [
+      },
       {
         title: 'Reddit EthTrader',
         path: 'https://www.reddit.com/r/ethtrader/'
@@ -84,11 +81,40 @@ const items = [
       {
         title: 'Reddit Ethereum',
         path: 'https://www.reddit.com/r/ethereum/'
+      },
+      {
+        title: 'Web3 Docs',
+        path: 'https://web3js.readthedocs.io/en/1.0/web3-eth-contract.html'
+      },
+      {
+        title: 'Solidity Docs',
+        path: 'https://solidity.readthedocs.io/en/v0.4.25/'
+      },
+      {
+        title: 'Etherscan',
+        path: 'https://etherscan.io/'
+      }
+    ]
+  },
+  {
+    name: 'News',
+    links: [
+      {
+        title: 'Gemini Adds GUSD stable coin',
+        path: 'https://techcrunch.com/2018/09/11/the-winklevoss-stablecoin-is-one-small-step-toward-crypto-acceptance/'
+      },
+      {
+        title: 'Michael Novogratz calls a bottom',
+        path: 'https://www.cnbc.com/2018/09/13/michael-novogratz-calls-a-bottom-in-cryptocurrencies.html'
+      },
+      {
+        title: 'Manhattan: $30M Real Estate Property Tokenized',
+        path:
+          'https://www.forbes.com/sites/rachelwolfson/2018/10/03/a-first-for-manhattan-30m-real-estate-property-tokenized-with-blockchain/'
       }
     ]
   }
 ]
-
 export default () => (
   <Footer>
     <FooterContent>

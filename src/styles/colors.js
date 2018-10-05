@@ -7,5 +7,6 @@ export const GREY = 'rgba(154, 153, 160, 1)'
 export const LESS_TURKISH = 'rgba(144, 170, 177, 0.2)'
 export const TURKISH = 'rgba(144, 170, 177, 1)'
 export const BLACK = 'rgba(98, 105, 116, 1)'
+export const ACCENT = 'rgba(202, 157, 138, 1)'
 
 export const WAVE_BLUE = '#003b51'

@@ -5,16 +5,14 @@ import { Header, Copy } from './Typography'
 
 const FullWidthBox = styled.div`
   background-color: ${styles.LESS_TURKISH};
-  width: 100%;
   display: flex;
   justify-content: center;
+  width: 100%;
 `
 
 const ThreeBlocks = styled.div`
   display: flex;
-  max-width: ${styles.SCREEN_XL};
-  width: 100%;
-  justify-content: space-between;
+  width: ${styles.SCREEN_XL};
   margin-top: ${styles.PADDING_MD};
   @media (max-width: ${styles.SCREEN_SM}) {
     flex-direction: column;
@@ -29,10 +27,11 @@ const BlockImg = styled.img`
 const ThreeBlock = styled.div`
   padding: ${styles.PADDING_MD};
   display: flex;
+  max-width: ${styles.SCREEN_XL};
   flex-direction: column;
-  width: 33%;
+  flex-grow: 1;
   @media (max-width: ${styles.SCREEN_SM}) {
-    width: 95%;
+    width: 90%;
   }
 `
 
@@ -47,12 +46,11 @@ export default ({ blocks }) => (
           <Header>
             {title}
           </Header>
-          <Copy>
-            {body}
-          </Copy>
-          <Copy>
-            {more}
-          </Copy>
+          {body.map(({ text }) => (
+            <Copy>
+              {text}
+            </Copy>
+          ))}
         </ThreeBlock>
       ))}
     </ThreeBlocks>

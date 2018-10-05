@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+export const CONTENT_TYPE_TEXT = 'CONTENT_TYPE_TEXT'
+export const CONTENT_TYPE_IMG = 'CONTENT_TYPE_IMG'
+export const CONTENT_TYPE_BUTTON = 'CONTENT_TYPE_BUTTON'
+
 export const LOGO = 'Dagnabit'
 
 const FONT_SARIF = 'IBM Plex Serif'
