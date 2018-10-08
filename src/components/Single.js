@@ -1,3 +1,4 @@
+/* eslint-disable no-alert, no-console */
 import React from 'react'
 import styled from 'styled-components'
 import * as styles from '../styles'
@@ -51,10 +52,11 @@ export default ({ block }) => (
       <ComboSubHeader>
         {block.subHeader}
       </ComboSubHeader>
-      {block.copy.map(({ text, type, path }) => {
+      {block.copy.map(({ text, type, path }, index) => {
         if (type === styles.CONTENT_TYPE_TEXT) {
           return (
-            <Copy>
+            // eslint-disable-next-line react/no-array-index-key
+            <Copy key={`single${index}`}>
               {text}
             </Copy>
           )

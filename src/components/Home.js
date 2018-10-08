@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 import styled, { keyframes } from 'styled-components'
 import FormControl from '@material-ui/core/FormControl'
 import { fadeIn } from 'react-animations'
-import dotenv from 'dotenv'
 import ThreeBlocks from './ThreeBlocks'
 import Single from './Single'
 import * as styles from '../styles'
@@ -180,8 +179,6 @@ export default class Home extends PureComponent {
   async componentDidMount() {
     const { firebase } = this.props
     const db = await firebase.database()
-    const config = await dotenv.config()
-    console.log('copnfiog===', firebase)
     this.setState({
       db
     })
@@ -212,7 +209,7 @@ export default class Home extends PureComponent {
             <MainImg>
               <VirCenter>
                 <Headline>
-Exploring the power of blockchain for you
+Exploring the Power of Blockchain for You
                 </Headline>
                 {!sentEmail && (
                   <Form>

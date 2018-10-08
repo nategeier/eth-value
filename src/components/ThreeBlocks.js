@@ -46,8 +46,9 @@ export default ({ blocks }) => (
           <Header>
             {title}
           </Header>
-          {body.map(({ text }) => (
-            <Copy>
+          {body.map(({ text }, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <Copy key={`three${index}`}>
               {text}
             </Copy>
           ))}

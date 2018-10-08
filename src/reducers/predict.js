@@ -12,11 +12,10 @@
  */
 
 const defaultState = {
-  predictDate: 0,
+  predictDate: 0
 }
 
 export default function predict(state = defaultState, action) {
-  console.log(state.predictDate)
   switch (action.type) {
   case 'PREDICT':
     return { ...state, predictDate: state.predictDate + 4 }

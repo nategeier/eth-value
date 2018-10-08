@@ -119,13 +119,14 @@ export default () => (
   <Footer>
     <FooterContent>
       <ThreeBlock>
-        {items.map(({ name, links }) => (
-          <Block>
+        {items.map(({ name, links }, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <Block key={`block${index}`}>
             <Header>
               {name}
             </Header>
             {links.map(({ title, path }) => (
-              <FooterLink size="0.8em" target="_blank" href={path} color={styles.TURKISH}>
+              <FooterLink key={path} size="0.8em" target="_blank" href={path} color={styles.TURKISH}>
                 {title}
               </FooterLink>
             ))}
