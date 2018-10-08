@@ -12,13 +12,13 @@ import * as styles from './styles/index'
 
 import './App.css'
 
-var config = {
+var configs = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
   databaseURL: process.env.REACT_APP_DATABASE_URL
 }
 
-firebase.initializeApp(config)
+firebase.initializeApp(configs)
 
 const Page = styled.div`
   display: flex;
