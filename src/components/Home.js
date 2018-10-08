@@ -2,12 +2,11 @@ import React, { PureComponent } from 'react'
 import styled, { keyframes } from 'styled-components'
 import FormControl from '@material-ui/core/FormControl'
 import { fadeIn } from 'react-animations'
+import dotenv from 'dotenv'
 import ThreeBlocks from './ThreeBlocks'
 import Single from './Single'
 import * as styles from '../styles'
-import {
-  Header, Copy, Headline, SubHeader
-} from './Typography'
+import { Copy, Headline } from './Typography'
 
 const fadeInAnimation = keyframes`${fadeIn}`
 
@@ -181,6 +180,8 @@ export default class Home extends PureComponent {
   async componentDidMount() {
     const { firebase } = this.props
     const db = await firebase.database()
+    const config = await dotenv.config()
+    console.log('copnfiog===', firebase)
     this.setState({
       db
     })

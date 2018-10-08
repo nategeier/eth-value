@@ -34,12 +34,12 @@ const offers = [
       {
         type: styles.CONTENT_TYPE_TEXT,
         text:
-          'Having worked with previous clearing firms that allocate fractional shares of publicly traded stock to users, and worked with systems that integrate with banks on card purchases, we know how messy the current financial system is. Doing a simple task requires integrating with several companies all trying to make sense of legacy code built in the nineties. Now, entrepreneurs and developers have the ability to transfer high value assets directly with the main line.'
+          'Having worked with previous clearing firms that allocate fractional shares of publicly traded stock to users, and worked with systems that integrate with banks on card purchases, we know how messy the current financial system is. Attempting a simple creative task requires integrating with several companies, all trying to make sense of legacy code built in the nineties. Now, entrepreneurs and developers have the ability to transfer high value assets directly with the main line.'
       },
       {
         type: styles.CONTENT_TYPE_TEXT,
         text:
-          'Blockchain is slow and expensive compared to internet, but in financial terms is 10x faster and 10x cheaper as far as actual transfer of value. Yes Visa does about 1,700 transactions per second (TPS) and Ethereum currently sits around 12 TPS, Bitcoin around 6 TPS, but you’ll notice those Visa transactions in your bank account as pending. It take days to actually move the funds, as they are nearly checking if you have the sufficient amount of funds before approving. Add international borders, and you will be looking at a stack of fees.'
+          'Blockchain is slow and expensive compared to internet, but in financial terms, it is tex x faster and ten x cheaper as far as actual transfer of value. Yes Visa does about 1,700 transactions per second (TPS) and Ethereum currently sits around 10 TPS, Bitcoin around 6 TPS, but you’ll notice those Visa transactions in your bank account as pending. It take days to actually move the funds, as they are nearly checking if you have the sufficient amount of funds before approving. Add international borders, and you will be looking at a stack of fees.'
       }
     ]
   },
@@ -51,7 +51,7 @@ const offers = [
       {
         type: styles.CONTENT_TYPE_TEXT,
         text:
-          'There is the chicken before the egg problem. In order to interact with the blockchain, most situations today require a person to have a native coin like Ether to get started. Converting fiat to a crypto currency  can take weeks through exchanged because there are various anti money laundering and know your customer verification checks that can take weeks to happen. The learning curve is steep, and when it comes to a persons money they are much more cautious.'
+          'The chicken before the egg problem is real. In order to interact with the blockchain, most situations today require a person to have a native coin like Ether to get started. Converting fiat to a crypto currency can take weeks through exchanges because there are various anti money laundering and know your customer verification checks that can take weeks to process. The learning curve is steep, and when it comes to a persons money they are much more cautious.'
       }
     ]
   },
@@ -63,7 +63,7 @@ const offers = [
       {
         type: styles.CONTENT_TYPE_TEXT,
         text:
-          'Everything is fair game for overhaul using blockchain. The escrow industry could be overwritten with 200 lines of code. Banks store your value, and provide loans, and charge billions in fees, loans simply being an algorithm could be provided by anyone. The list is massive, and all we have to do is start informing ourselves to take part in this global revolution. '
+          'Everything is fair game for overhaul using blockchain. The escrow industry could be overwritten with 200 lines of code, hard emphases on “could". Banks store your value, and provide loans, and charge billions in fees, loans simply being an algorithm could be provided by anyone. The list is massive, and all we have to do is start informing ourselves to take part in this global revolution.'
       }
     ]
   }

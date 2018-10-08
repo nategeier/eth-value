@@ -20,12 +20,17 @@ const IntroBlock = {
     {
       type: styles.CONTENT_TYPE_TEXT,
       text:
-        'Nate has been traveling since February 2018 fully immersing himself in the global blockchain community through independent research. He has attended and spoke at meetups in Lisboa, Portugal, Bangkok and Chiang Mai Thailand, Singapore, and the Dojo community in Bali, Indonesia.'
+        'Nate has been traveling since February 2018 fully immersing himself in the global blockchain community through independent research. He has attended and spoke at blockchain meetups in Lisbon, Portugal, Bangkok and Chiang Mai Thailand, Singapore, and the Dojo community in Bali, Indonesia.'
     },
     {
       type: styles.CONTENT_TYPE_TEXT,
       text:
-        'Nate’s background in helping Nike build large applications such as NikeiD and its Claims and Returns application makes him understand the struggles large corporations have to experiment with new technologies. His previous role at a FinTech startup called Bumped is what pushed him over the edge to start focusing full time on blockchain. He worked with clearing firms specifically that managed customers stock positions, AML, and KYC processes. The application was a platform that automatically gave users fractional shares of any publicly traded company as a reward from the users daily spending occurrences pulled from Plaid. Ex: Users buys a coffee at Starbucks, the user gets 0.0021 SBUX.'
+        'Nate’s background in helping Nike build large applications such as NikeiD and its Claims and Returns application makes him understand the struggles large corporations have to experiment with new technologies. His previous role at a FinTech startup called Bumped is what pushed him over the edge to start focusing full time on blockchain. He worked with clearing firms specifically that managed customers stock positions, anti money laundering, and know your customer processes.'
+    },
+    {
+      type: styles.CONTENT_TYPE_TEXT,
+      text:
+        'We have a team of highly trained engineers to help meet your needs at scale. We only take on one project at a time so get on the waitlist as soon as you can.'
     },
     {
       type: styles.CONTENT_TYPE_BUTTON,

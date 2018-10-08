@@ -144,7 +144,7 @@ export default class Apex extends PureComponent {
     const { setBalances, props } = this
     const { firebase } = props
     const db = await firebase.database()
-    const web3 = new Web3(Web3.givenProvider || 'ws://localhost:8545')
+    const web3 = new Web3(Web3.givenProvider)
     await this.setState(
       {
         web3,

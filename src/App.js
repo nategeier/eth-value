@@ -5,7 +5,6 @@ import { Route, Switch } from 'react-router'
 import { ConnectedRouter } from 'connected-react-router'
 import firebase from 'firebase'
 import store, { history } from './store/store'
-import Home from './components/Home'
 import routes from './data/routes'
 import Footer from './components/Footer'
 import TopNav from './components/TopNav'
@@ -14,9 +13,9 @@ import * as styles from './styles/index'
 import './App.css'
 
 var config = {
-  apiKey: 'AIzaSyBCkQDSd9dsT9MvQLzjuDvAR8jAefzXZKI',
-  authDomain: 'eth-value.firebaseapp.com',
-  databaseURL: 'https://eth-value.firebaseio.com/'
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL
 }
 
 firebase.initializeApp(config)
