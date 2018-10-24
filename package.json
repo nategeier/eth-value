@@ -2,6 +2,13 @@
   "name": "eth-value",
   "version": "0.1.1",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "eslint": "./node_modules/.bin/eslint src"
+  },
   "dependencies": {
     "@material-ui/core": "^1.5.1",
     "@web3/buzz": "0.0.1",
@@ -9,6 +16,7 @@
     "crypto-js": "^3.1.9-1",
     "firebase": "^5.5.1",
     "npm": "^6.2.0",
+    "query-string": "^6.2.0",
     "react": "^16.4.1",
     "react-animations": "^1.0.0",
     "react-dom": "^16.4.1",
@@ -23,13 +31,6 @@
     "web3": "^1.0.0-beta.35",
     "web3-bzz": "^1.0.0-beta.35",
     "ws": "^5.2.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "eslint": "./node_modules/.bin/eslint src"
   },
   "devDependencies": {
     "eslint": "^4.19.1",

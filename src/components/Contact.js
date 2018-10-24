@@ -20,7 +20,7 @@ const IntroBlock = {
     {
       type: styles.CONTENT_TYPE_TEXT,
       text:
-        'Nate has been traveling since February 2018 fully immersing himself in the global blockchain community through independent research. He has attended and spoke at blockchain meetups in Lisbon, Portugal, Bangkok and Chiang Mai Thailand, Singapore, and the Dojo community in Bali, Indonesia.'
+        'Nate has been traveling since February 2018, fully immersing himself in the global blockchain community through independent research. He has attended and spoke at blockchain meetups in Lisbon Portugal, Bangkok and Chiang Mai Thailand, Singapore, and the Dojo community in Bali, Indonesia.'
     },
     {
       type: styles.CONTENT_TYPE_TEXT,
@@ -30,7 +30,7 @@ const IntroBlock = {
     {
       type: styles.CONTENT_TYPE_TEXT,
       text:
-        'We have a team of highly trained engineers to help meet your needs at scale. We only take on one project at a time so get on the waitlist as soon as you can.'
+        'We have a team of highly trained engineers to help meet your needs. We only take on one project at a time so get on the waitlist as soon as you can.'
     },
     {
       type: styles.CONTENT_TYPE_BUTTON,

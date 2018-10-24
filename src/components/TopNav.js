@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import { fadeIn } from 'react-animations'
 import * as styles from '../styles'
+import MobileNav from './MobileNav'
 import routes from '../data/routes'
 
 const fadeInAnimation = keyframes`${fadeIn}`
@@ -26,11 +27,9 @@ const NavButton = styled(NavLink)`
   align-items: center;
   font-size: 0.8rem;
   color: ${styles.TURKISH};
-  background-color: ${styles.LESS_TURKISH};
   animation: 0.6s ${fadeInAnimation};
   &:hover {
-    background-color: ${styles.TURKISH};
-    color: ${styles.OFF_WHITE};
+    background-color: ${styles.LESS_TURKISH};
     animation: 0.6s ${fadeInAnimation};
     cursor: pointer;
   }
@@ -62,11 +61,11 @@ export default ({ isMobile }) => (
 ETHVALUE
       </Logo>
     </LogoButton>
-
+    {isMobile && <MobileNav />}
     {!isMobile && (
       <Nav>
         {routes.map(({ path, text, isNav }) => {
-          if (!isNav) {
+          if (process.env.NODE_ENV === 'production' && !isNav) {
             return false
           }
           return (

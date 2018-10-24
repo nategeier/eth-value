@@ -28,15 +28,14 @@ export const Headline = styled(styles.Thin)`
   margin-bottom: ${styles.PADDING_SM};
 `
 
-export const ComboHeader = styled(styles.Gill)`
+export const ComboHeader = styled(styles.Thin)`
   font-size: ${({ size }) => size || '1.5rem'};
-  color: ${({ color }) => color || styles.LIGHT_GREY};
-  text-transform: uppercase;
+  color: ${({ color }) => color || styles.ACCENT};
 `
 
-export const ComboSubHeader = styled(styles.Thin)`
-  font-size: ${({ size }) => size || '1.2rem'};
-  color: ${({ color }) => color || styles.ACCENT};
+export const ComboSubHeader = styled(styles.Gill)`
+  font-size: ${({ size }) => size || '1.3rem'};
+  color: ${({ color }) => color || styles.LIGHT_GREY};
   margin-bottom: ${styles.PADDING_SM};
 `
 

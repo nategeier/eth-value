@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router'
 import { ConnectedRouter } from 'connected-react-router'
 import firebase from 'firebase/app'
 import 'firebase/database'
+import 'firebase/auth'
 import store, { history } from './store/store'
 import routes from './data/routes'
 import Footer from './components/Footer'
@@ -16,7 +17,8 @@ import './App.css'
 var configs = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_DATABASE_URL
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  secretKey: 'VOZ8iWvnxWTtn0dlYTRNdwyTUnhrFNuq4CBF0l2U'
 }
 
 firebase.initializeApp(configs)

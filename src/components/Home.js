@@ -209,7 +209,7 @@ export default class Home extends PureComponent {
             <MainImg>
               <VirCenter>
                 <Headline>
-Exploring the Power of Blockchain for You
+Exploring the Power of Blockchain
                 </Headline>
                 {!sentEmail && (
                   <Form>
@@ -230,7 +230,7 @@ Exploring the Power of Blockchain for You
                 )}
                 {sentEmail && (
                   <Copy color={styles.OFF_WHITE}>
-Thanks! We'll get back to as soon as we can.
+Thanks! We'll get back to you as soon as we can.
                   </Copy>
                 )}
               </VirCenter>
