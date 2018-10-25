@@ -1,27 +1,15 @@
 import React, { PureComponent } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 import { fadeIn } from 'react-animations'
+import { push } from 'connected-react-router'
 import * as styles from '../styles'
 import routes from '../data/routes'
 import * as typo from './Typography'
+import { toggleMobileNav } from '../reducers/mobile'
 
 const fadeInAnimation = keyframes`${fadeIn}`
-
-const NavButton = styled(NavLink)`
-  text-decoration: none;
-  margin-left: 1px;
-  flex-grow: 1;
-  align-items: center;
-  background-color: ${styles.LESS_TURKISH};
-  font-size: 0.8rem;
-  color: ${styles.OFF_WHITE};
-  &:hover {
-    background-color: ${styles.LESS_TURKISH};
-    animation: 0.6s ${fadeInAnimation};
-    cursor: pointer;
-  }
-`
 
 const MenuText = styled(typo.SanHeader)`
   text-align: right;
@@ -51,7 +39,7 @@ export const Header = styled(styles.Thin)`
 `
 
 const Container = styled.div`
-  animation: 0.6s ${fadeInAnimation};
+  animation: 0.3s ${fadeInAnimation};
   background-color: ${styles.TURKISH};
   position: absolute;
   top: 0;
@@ -61,7 +49,7 @@ const Container = styled.div`
   z-index: 1;
 `
 
-const MobileButton = styled.div`
+const MobileButton = styled.button`
   background-color: ${styles.LESS_TURKISH};
   display: flex;
   border: none;
@@ -69,6 +57,7 @@ const MobileButton = styled.div`
   flex-grow: 1;
   width: 100%;
   padding: ${styles.PADDING_SM};
+  padding-top: ${styles.PADDING_MD};
   color: #ffffff;
   justify-content: center;
   text-align: center;
@@ -78,28 +67,14 @@ const MobileButton = styled.div`
 const NavText = styled(typo.SanHeader)`
   text-align: center;
 `
-export default class MobileNav extends PureComponent {
-  constructor(props) {
-    super(props)
 
-    this.state = {
-      isOpen: false
-    }
-  }
-
-  handleOnClick = () => {
-    console.log('=======', this.state)
-    const { isOpen } = this.state
-    this.setState({
-      isOpen: !isOpen
-    })
-  }
-
+class MobileNav extends PureComponent {
   render() {
-    const { isOpen } = this.state
+    const { isOpen, onToggle, linkTo } = this.props
+    console.log('is open=====', isOpen)
     return (
       <NavBar>
-        <Button onClick={this.handleOnClick}>
+        <Button onClick={onToggle}>
           <MenuText>
 Menu
           </MenuText>
@@ -111,13 +86,11 @@ Menu
                 return false
               }
               return (
-                <NavButton key={text} to={path}>
-                  <MobileButton>
-                    <NavText color={styles.OFF_WHITE}>
-                      {text}
-                    </NavText>
-                  </MobileButton>
-                </NavButton>
+                <MobileButton key={text} onClick={() => linkTo(path)}>
+                  <NavText color={styles.OFF_WHITE}>
+                    {text}
+                  </NavText>
+                </MobileButton>
               )
             })}
           </Container>
@@ -126,3 +99,22 @@ Menu
     )
   }
 }
+
+const mapStateToProps = ({ mobile }) => ({
+  isOpen: mobile.mobileNavOpen
+})
+
+const mapDispatchToProps = dispatch => ({
+  onToggle: () => {
+    dispatch(toggleMobileNav())
+  },
+  linkTo: path => {
+    dispatch(toggleMobileNav())
+    dispatch(push(path))
+  }
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MobileNav)

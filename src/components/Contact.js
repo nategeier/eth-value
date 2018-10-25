@@ -14,7 +14,7 @@ const Page = styled.div`
 
 const IntroBlock = {
   path: '/nate.jpg',
-  header: 'This is Nate',
+  header: 'This is Nate: Founder',
   subHeader: 'Obsessed with blockchain for a while now',
   copy: [
     {

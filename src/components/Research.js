@@ -20,7 +20,7 @@ const IntroBlock = {
     {
       type: styles.CONTENT_TYPE_TEXT,
       text:
-        'Blockchain is a new technology and we don’t know everything. The space is constantly evolving. Every day a new developer tool or institutional adoption opens the doors to new possibilities. This reality comes with several traps and the sheer newness lays loads of landmines including: Contract bugs that can/has drained millions of funds, immutability and the inability to update code, scalability, regulations, and user adoption. Lean on our experience to look into your companies friction points and we’ll go from there.'
+        'Blockchain is a new technology and we don’t know everything. The space is constantly evolving. Every day a new developer tool or institutional adoption opens the doors to new possibilities. This reality comes with several traps and the sheer newness lays loads of land mines such as contract bugs that can/has drained millions in funds, immutability problikes like the inability to update code, scalability, regulations, and user adoption are to name a few. Lean on our experience to look into your companies friction points and we’ll go from there.'
     }
   ]
 }
