@@ -42,7 +42,7 @@ const Actions = styled.div`
   flex-grow: 1;
   flex-wrap: wrap;
 `
-const getStatus = (isCheck) => {
+const getStatus = isCheck => {
   if (isCheck) {
     return (
       <Icon>
@@ -93,7 +93,7 @@ export default class Escrow extends PureComponent {
     this.setState({ contract, web3, bzz })
   }
 
-  handleChange = (props) => (event) => {
+  handleChange = props => event => {
     this.setState({ [props]: event.target.value })
   }
 
@@ -120,14 +120,14 @@ export default class Escrow extends PureComponent {
           value,
           to: escrowAccount
         })
-        .on('transactionHash', (hash) => {
+        .on('transactionHash', hash => {
           console.log('hash======', hash)
         })
         .on('confirmation', (confirmationNumber, receipt) => {
           console.log('confirmation==========', confirmationNumber)
           console.log('receipt==========', receipt)
         })
-        .on('receipt', (receipt) => {
+        .on('receipt', receipt => {
           console.log('on receipt========', receipt)
         })
     } catch (e) {
@@ -150,14 +150,14 @@ export default class Escrow extends PureComponent {
       .send({
         from: buyer
       })
-      .on('transactionHash', (hash) => {
+      .on('transactionHash', hash => {
         console.log('hash======', hash)
       })
       .on('confirmation', (confirmationNumber, receipt) => {
         console.log('confirmation==========', confirmationNumber)
         console.log('receipt==========', receipt)
       })
-      .on('receipt', (receipt) => {
+      .on('receipt', receipt => {
         console.log('on receipt========', receipt)
       })
   }
@@ -172,14 +172,14 @@ export default class Escrow extends PureComponent {
         value,
         from
       })
-      .on('transactionHash', (hash) => {
+      .on('transactionHash', hash => {
         console.log('hash======', hash)
       })
       .on('confirmation', (confirmationNumber, receipt) => {
         console.log('confirmation==========', confirmationNumber)
         console.log('receipt==========', receipt)
       })
-      .on('receipt', (receipt) => {
+      .on('receipt', receipt => {
         console.log('on receipt========', receipt)
       })
   }
